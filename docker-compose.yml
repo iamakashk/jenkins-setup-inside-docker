@@ -1,0 +1,17 @@
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    user: root
+
+    ports:
+      - "10001:8080"
+      - "50000:50000"
+
+    restart: unless-stopped
+
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  jenkins_home:
